@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LombaKu — Politeknik Mardira Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1A2E5A;
+  --navy2: #243A72;
+  --blue: #2563B0;
+  --blue-mid: #3B82D4;
+  --blue-light: #DBEAFE;
+  --blue-pale: #EFF6FF;
+  --yellow: #F5B800;
+  --yellow-light: #FFFBEB;
+  --yellow-mid: #FDE68A;
+  --white: #FFFFFF;
+  --text-dark: #0F1E3C;
+  --text-mid: #3A567A;
+  --text-light: #7A9BBF;
+  --border: #C8DDEF;
+  --sidebar-w: 240px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--blue-pale);}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ══════════════════════════════
+   LANDING PAGE
+══════════════════════════════ */
+#page-landing{background:var(--blue-pale);}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 48px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo .logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--yellow);
+}
+.nav-logo span{font-weight:600;font-size:15px;color:var(--navy);}
+.nav-logo small{font-size:11px;color:var(--text-light);display:block;margin-top:-2px;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--navy);}
+.btn-nav-login{
+  padding:8px 22px;background:var(--navy);color:var(--white);
+  border:none;border-radius:8px;font-size:13px;font-weight:500;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:opacity .2s;
+}
+.btn-nav-login:hover{opacity:.85;}
+
+/* HERO LANDING */
+.hero-land{
+  min-height:100vh;
+  background:linear-gradient(155deg,var(--navy) 0%,var(--navy2) 55%,var(--blue) 100%);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:100px 40px 60px;position:relative;overflow:hidden;
+}
+.hero-land::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(59,130,212,0.18);}
+.hero-land::after{content:'';position:absolute;bottom:-100px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(245,184,0,0.08);}
+.hero-land-inner{position:relative;z-index:1;max-width:700px;}
+.hero-badge{
+  display:inline-block;
+  background:rgba(245,184,0,0.15);border:1px solid rgba(245,184,0,0.4);
+  color:var(--yellow);font-size:11px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:24px;
+}
+.hero-land h1{
+  font-family:'Playfair Display',serif;font-size:52px;font-weight:700;
+  color:var(--white);line-height:1.15;margin-bottom:16px;
+}
+.hero-land h1 span{color:var(--yellow);}
+.hero-land p{font-size:16px;color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 36px;line-height:1.8;}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:56px;}
+.btn-primary{
+  padding:14px 32px;background:var(--yellow);color:var(--navy);
+  border:none;border-radius:10px;font-family:'DM Sans',sans-serif;
+  font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;
+}
+.btn-primary:hover{background:#e0a800;transform:translateY(-1px);}
+.btn-outline{
+  padding:14px 32px;background:transparent;color:var(--white);
+  border:1.5px solid rgba(255,255,255,0.35);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;
+  cursor:pointer;transition:all .2s;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.6);}
+.hero-stats{display:flex;justify-content:center;gap:48px;}
+.h-stat .num{font-family:'Playfair Display',serif;font-size:30px;color:var(--yellow);font-weight:700;}
+.h-stat .lbl{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
+
+/* FEATURES */
+.features{padding:80px 48px;background:var(--white);}
+.sec-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-mid);font-weight:600;margin-bottom:10px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:32px;color:var(--text-dark);margin-bottom:10px;}
+.sec-sub{font-size:14px;color:var(--text-light);max-width:480px;line-height:1.7;margin-bottom:48px;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+.feat-card{
+  padding:28px 24px;border:1px solid var(--border);border-radius:16px;
+  background:var(--blue-pale);transition:all .2s;
+}
+.feat-card:hover{border-color:var(--blue-mid);transform:translateY(-3px);}
+.feat-icon{
+  width:48px;height:48px;border-radius:12px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:16px;
+}
+.feat-card h3{font-size:15px;font-weight:600;color:var(--text-dark);margin-bottom:8px;}
+.feat-card p{font-size:13px;color:var(--text-light);line-height:1.6;}
+
+/* LOMBA HIGHLIGHT */
+.lomba-sec{padding:80px 48px;background:var(--blue-pale);}
+.lomba-sec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:36px;}
+.lomba-hi-card{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  padding:20px 18px;transition:all .2s;cursor:pointer;
+}
+.lomba-hi-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 20px rgba(37,99,176,.1);transform:translateY(-2px);}
+.lomba-hi-card .icon{font-size:28px;margin-bottom:12px;}
+.lomba-hi-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:4px;}
+.lomba-hi-card .cat-badge{
+  display:inline-block;font-size:10px;padding:2px 10px;border-radius:10px;
+  background:var(--blue-light);color:var(--navy);font-weight:500;margin-bottom:8px;
+}
+.lomba-hi-card .prize{font-size:12px;color:var(--blue);font-weight:500;}
+.lomba-hi-card .deadline{font-size:11px;color:var(--text-light);margin-top:4px;}
+.cta-center{text-align:center;}
+
+/* TIMELINE */
+.timeline-sec{padding:80px 48px;background:var(--white);}
+.timeline{display:flex;gap:0;position:relative;margin-top:40px;}
+.timeline::before{content:'';position:absolute;top:28px;left:28px;right:28px;height:2px;background:linear-gradient(90deg,var(--yellow),var(--blue-mid));z-index:0;}
+.t-step{flex:1;text-align:center;position:relative;z-index:1;}
+.t-dot{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--navy);border:3px solid var(--yellow);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin:0 auto 14px;
+}
+.t-step h4{font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:4px;}
+.t-step p{font-size:11px;color:var(--text-light);}
+
+/* CTA SECTION */
+.cta-sec{
+  padding:80px 48px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  text-align:center;
+}
+.cta-sec h2{font-family:'Playfair Display',serif;font-size:36px;color:var(--white);margin-bottom:12px;}
+.cta-sec p{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:32px;}
+
+/* FOOTER */
+.footer{background:var(--text-dark);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:16px;color:var(--white);}
+.footer-logo small{display:block;font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.35);}
+.footer-copy span{color:var(--yellow);}
+
+/* ══════════════════════════════
+   LOGIN PAGE
+══════════════════════════════ */
+#page-login{
+  min-height:100vh;
+  background:linear-gradient(155deg,var(--navy) 0%,var(--navy2) 60%,var(--blue) 100%);
+  display:flex;align-items:center;justify-content:center;padding:40px 20px;
+}
+.login-card{
+  background:var(--white);border-radius:24px;
+  padding:40px 40px;width:100%;max-width:420px;
+  box-shadow:0 24px 64px rgba(10,20,60,.25);
+}
+.login-logo{text-align:center;margin-bottom:32px;}
+.login-logo .mark{
+  width:56px;height:56px;border-radius:16px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--yellow);
+  margin:0 auto 12px;
+}
+.login-logo h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-dark);}
+.login-logo p{font-size:12px;color:var(--text-light);margin-top:4px;}
+
+.role-tabs{display:flex;background:var(--blue-pale);border-radius:10px;padding:4px;margin-bottom:24px;gap:4px;}
+.role-tab{
+  flex:1;padding:9px;border:none;border-radius:8px;background:transparent;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  color:var(--text-light);cursor:pointer;transition:all .2s;
+}
+.role-tab.active{background:var(--white);color:var(--navy);box-shadow:0 1px 6px rgba(0,0,0,.08);}
+
+.form-group{margin-bottom:16px;}
+.form-label{font-size:12px;font-weight:500;color:var(--text-mid);display:block;margin-bottom:6px;}
+.form-input{
+  width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-dark);
+  background:var(--blue-pale);outline:none;transition:border-color .2s;
+}
+.form-input:focus{border-color:var(--blue-mid);background:var(--white);}
+.form-input::placeholder{color:var(--text-light);}
+
+.btn-login{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:var(--white);border:none;border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;margin-top:4px;transition:opacity .2s;position:relative;overflow:hidden;
+}
+.btn-login::after{content:'';position:absolute;top:0;right:0;width:5px;height:100%;background:var(--yellow);}
+.btn-login:hover{opacity:.9;}
+
+.login-back{text-align:center;margin-top:20px;}
+.login-back a{font-size:13px;color:var(--text-light);text-decoration:none;cursor:pointer;}
+.login-back a:hover{color:var(--blue);}
+.login-hint{background:var(--yellow-light);border:1px solid var(--yellow-mid);border-radius:10px;padding:10px 14px;margin-bottom:20px;font-size:12px;color:#7a5c0a;line-height:1.6;}
+.login-hint strong{color:#5a3f00;}
+
+/* ══════════════════════════════
+   DASHBOARD LAYOUT
+══════════════════════════════ */
+.dash-wrap{display:flex;min-height:100vh;}
+
+/* SIDEBAR */
+.sidebar{
+  width:var(--sidebar-w);background:var(--navy);
+  display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:50;
+}
+.sidebar-logo{
+  padding:24px 20px;border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;gap:10px;
+}
+.sidebar-logo .s-mark{
+  width:34px;height:34px;border-radius:9px;background:var(--yellow);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:var(--navy);
+  flex-shrink:0;
+}
+.sidebar-logo span{font-weight:600;font-size:14px;color:var(--white);}
+.sidebar-logo small{font-size:10px;color:rgba(255,255,255,.4);display:block;}
+
+.sidebar-nav{flex:1;padding:16px 12px;overflow-y:auto;}
+.nav-section-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 8px;margin:16px 0 6px;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:10px;cursor:pointer;transition:all .2s;margin-bottom:2px;
+  font-size:13px;font-weight:500;color:rgba(255,255,255,.6);
+  text-decoration:none;
+}
+.nav-item:hover{background:rgba(255,255,255,.08);color:var(--white);}
+.nav-item.active{background:rgba(245,184,0,.15);color:var(--yellow);}
+.nav-item .ni{font-size:16px;width:18px;text-align:center;}
+.nav-badge{
+  margin-left:auto;background:var(--yellow);color:var(--navy);
+  font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;
+}
+
+.sidebar-user{
+  padding:16px;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;gap:10px;
+}
+.s-avatar{
+  width:34px;height:34px;border-radius:50%;background:var(--blue-mid);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:var(--white);flex-shrink:0;
+}
+.s-user-name{font-size:13px;font-weight:500;color:var(--white);}
+.s-user-role{font-size:10px;color:rgba(255,255,255,.4);}
+.s-logout{margin-left:auto;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-size:16px;transition:color .2s;}
+.s-logout:hover{color:var(--yellow);}
+
+/* MAIN CONTENT */
+.dash-main{margin-left:var(--sidebar-w);flex:1;min-height:100vh;background:var(--blue-pale);}
+.dash-topbar{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:40;
+}
+.topbar-title{font-size:16px;font-weight:600;color:var(--text-dark);}
+.topbar-title small{font-size:12px;color:var(--text-light);font-weight:400;margin-left:8px;}
+.topbar-actions{display:flex;align-items:center;gap:12px;}
+.topbar-btn{
+  padding:7px 16px;border-radius:8px;font-size:12px;font-weight:500;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;border:none;
+}
+.topbar-btn.primary{background:var(--navy);color:var(--white);}
+.topbar-btn.primary:hover{opacity:.85;}
+.topbar-btn.outline{background:var(--white);color:var(--text-mid);border:1px solid var(--border);}
+.topbar-btn.outline:hover{border-color:var(--blue-mid);color:var(--blue);}
+
+.dash-content{padding:28px 32px;}
+
+/* PANELS */
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* STAT CARDS */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px;}
+.stat-card{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 20px;
+}
+.stat-card .s-icon{font-size:22px;margin-bottom:10px;}
+.stat-card .s-val{font-family:'Playfair Display',serif;font-size:28px;color:var(--text-dark);font-weight:600;}
+.stat-card .s-lbl{font-size:12px;color:var(--text-light);margin-top:2px;}
+.stat-card .s-delta{font-size:11px;color:#16a34a;margin-top:6px;}
+.stat-card.yellow-acc{border-left:4px solid var(--yellow);}
+.stat-card.blue-acc{border-left:4px solid var(--blue-mid);}
+.stat-card.navy-acc{border-left:4px solid var(--navy);}
+.stat-card.green-acc{border-left:4px solid #16a34a;}
+
+/* TABLE */
+.table-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.table-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.table-head h3{font-size:14px;font-weight:600;color:var(--text-dark);}
+.table-head span{font-size:12px;color:var(--text-light);}
+table{width:100%;border-collapse:collapse;}
+th{font-size:11px;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px;padding:10px 20px;text-align:left;background:var(--blue-pale);}
+td{font-size:13px;color:var(--text-dark);padding:12px 20px;border-top:1px solid var(--border);}
+tr:hover td{background:var(--blue-pale);}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:10px;}
+.badge.green{background:#dcfce7;color:#15803d;}
+.badge.blue{background:var(--blue-light);color:var(--navy);}
+.badge.yellow{background:var(--yellow-mid);color:#7a5c0a;}
+.badge.gray{background:#f1f5f9;color:#64748b;}
+.badge.red{background:#fee2e2;color:#dc2626;}
+
+/* LOMBA GRID (admin/mhs) */
+.lomba-manage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px;}
+.lm-card{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .2s;
+}
+.lm-card:hover{border-color:var(--blue-mid);box-shadow:0 4px 16px rgba(37,99,176,.1);}
+.lm-card .lm-icon{font-size:28px;margin-bottom:12px;}
+.lm-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:6px;}
+.lm-card .lm-meta{font-size:12px;color:var(--text-light);margin-bottom:10px;line-height:1.6;}
+.lm-card .lm-prize{font-size:12px;color:var(--blue);font-weight:500;margin-bottom:12px;}
+.lm-actions{display:flex;gap:8px;}
+.btn-sm{
+  padding:6px 12px;border-radius:7px;font-size:12px;font-weight:500;
+  cursor:pointer;font-family:'DM Sans',sans-serif;border:none;transition:all .2s;
+}
+.btn-sm.primary{background:var(--navy);color:var(--white);}
+.btn-sm.primary:hover{opacity:.85;}
+.btn-sm.danger{background:#fee2e2;color:#dc2626;}
+.btn-sm.danger:hover{background:#fecaca;}
+.btn-sm.success{background:#dcfce7;color:#15803d;}
+.btn-sm.success:hover{background:#bbf7d0;}
+.btn-sm.outline{background:var(--white);color:var(--text-mid);border:1px solid var(--border);}
+.btn-sm.outline:hover{border-color:var(--blue-mid);color:var(--blue);}
+
+/* MAHASISWA — DAFTAR LOMBA */
+.lomba-reg-card{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;
+  padding:20px;transition:all .2s;cursor:pointer;
+}
+.lomba-reg-card:hover{border-color:var(--blue-mid);transform:translateY(-2px);}
+.lomba-reg-card.registered{border-color:#16a34a;background:#f0fdf4;}
+.lomba-reg-card .reg-head{display:flex;gap:14px;align-items:flex-start;}
+.lomba-reg-card .reg-icon{font-size:30px;flex-shrink:0;}
+.lomba-reg-card h4{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:4px;}
+.lomba-reg-card .reg-meta{font-size:12px;color:var(--text-light);line-height:1.6;}
+.lomba-reg-card .reg-prize{font-size:12px;color:var(--blue);font-weight:500;margin-top:6px;}
+.lomba-reg-card .reg-foot{margin-top:14px;display:flex;align-items:center;justify-content:space-between;}
+
+/* PROFILE CARD */
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:520px;}
+.profile-avatar{
+  width:72px;height:72px;border-radius:50%;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;font-weight:600;color:var(--yellow);
+  margin-bottom:16px;
+}
+.profile-name{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-dark);margin-bottom:4px;}
+.profile-nim{font-size:13px;color:var(--text-light);margin-bottom:20px;}
+.profile-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.profile-field label{font-size:11px;color:var(--text-light);display:block;margin-bottom:4px;font-weight:500;letter-spacing:.3px;}
+.profile-field span{font-size:13px;color:var(--text-dark);font-weight:500;}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:48px 20px;color:var(--text-light);}
+.empty .e-icon{font-size:40px;margin-bottom:12px;}
+.empty p{font-size:13px;line-height:1.7;}
+
+/* CHART BARS */
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:16px;}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.bar{width:100%;border-radius:6px 6px 0 0;background:var(--blue-light);transition:height .4s;min-height:4px;}
+.bar.highlight{background:var(--navy);}
+.bar-lbl{font-size:10px;color:var(--text-light);}
+.bar-val{font-size:10px;font-weight:600;color:var(--text-mid);}
+
+/* MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(10,20,60,.5);z-index:200;
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--white);border-radius:20px;padding:32px;width:100%;max-width:480px;
+  max-height:90vh;overflow-y:auto;
+}
+.modal-box h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--text-dark);margin-bottom:20px;}
+.modal-close{float:right;background:none;border:none;font-size:20px;color:var(--text-light);cursor:pointer;margin-top:-4px;}
+.form-group{margin-bottom:16px;}
+.form-label-m{font-size:12px;font-weight:500;color:var(--text-mid);display:block;margin-bottom:6px;}
+.form-input-m,.form-select-m,.form-textarea-m{
+  width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-dark);
+  background:var(--blue-pale);outline:none;transition:border-color .2s;appearance:none;
+}
+.form-input-m:focus,.form-select-m:focus,.form-textarea-m:focus{border-color:var(--blue-mid);background:var(--white);}
+.form-textarea-m{min-height:80px;resize:vertical;}
+.modal-actions{display:flex;gap:10px;margin-top:20px;}
+.btn-modal-primary{
+  flex:1;padding:11px;background:var(--navy);color:var(--white);
+  border:none;border-radius:10px;font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:600;cursor:pointer;
+}
+.btn-modal-cancel{
+  padding:11px 20px;background:var(--blue-pale);color:var(--text-mid);
+  border:1px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;
+  font-size:13px;cursor:pointer;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  background:var(--navy);color:var(--white);padding:12px 20px;
+  border-radius:10px;font-size:13px;font-weight:500;
+  border-left:4px solid var(--yellow);
+  transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;
+}
+.toast.show{transform:translateY(0);opacity:1;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ LANDING ══════════════════════════════ -->
+<div id="page-landing" class="page active">
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="logo-mark">M</div>
+      <div>
+        <span>LombaKu</span>
+        <small>Politeknik Mardira Indonesia</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#lomba-sec">Lomba</a>
+      <a href="#timeline-sec">Jadwal</a>
+      <a href="#fitur-sec">Tentang</a>
+      <button class="btn-nav-login" onclick="goTo('page-login')">Masuk / Daftar</button>
+    </div>
+  </nav>
+
+  <div class="hero-land">
+    <div class="hero-land-inner">
+      <div class="hero-badge">✦ Tahun Akademik 2025/2026 ✦</div>
+      <h1>Raih Prestasi<br>di <span>Lomba Kampus</span></h1>
+      <p>Platform resmi pendaftaran lomba Politeknik Mardira Indonesia. Satu tempat untuk semua kategori — akademik, seni, olahraga, dan teknologi.</p>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="goTo('page-login')">🏆 Daftar Lomba Sekarang</button>
+        <button class="btn-outline" onclick="document.getElementById('lomba-sec').scrollIntoView({behavior:'smooth'})">Lihat Lomba →</button>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="num">12</div><div class="lbl">Kategori Lomba</div></div>
+        <div class="h-stat"><div class="num">247</div><div class="lbl">Peserta</div></div>
+        <div class="h-stat"><div class="num">Rp 35jt</div><div class="lbl">Total Hadiah</div></div>
+        <div class="h-stat"><div class="num">15 Jul</div><div class="lbl">Penutupan</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features" id="fitur-sec">
+    <div class="sec-label">Platform Kami</div>
+    <div class="sec-title">Kenapa LombaKu?</div>
+    <div class="sec-sub">Sistem pendaftaran lomba yang mudah, transparan, dan terintegrasi khusus untuk civitas akademika Mardira.</div>
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-icon">📋</div><h3>Pendaftaran Mudah</h3><p>Daftar lomba hanya dalam beberapa langkah, kapan saja dan di mana saja.</p></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><h3>Dashboard Real-time</h3><p>Pantau status pendaftaran dan pengumuman hasil secara langsung.</p></div>
+      <div class="feat-card"><div class="feat-icon">🏅</div><h3>Semua Kategori</h3><p>Akademik, seni, olahraga, dan teknologi — semua dalam satu platform.</p></div>
+      <div class="feat-card"><div class="feat-icon">🔔</div><h3>Notifikasi Otomatis</h3><p>Dapat pengingat deadline dan info penting langsung di dashboard.</p></div>
+    </div>
+  </div>
+
+  <div class="lomba-sec" id="lomba-sec">
+    <div class="sec-label">Lomba Tersedia</div>
+    <div class="sec-title">Pilih Kategorimu</div>
+    <div class="sec-sub">12 lomba bergengsi menanti. Tunjukkan bakatmu dan bawa pulang hadiahnya!</div>
+    <div class="lomba-sec-grid">
+      <div class="lomba-hi-card"><div class="icon">📝</div><div class="cat-badge">Akademik</div><h4>Esai Ilmiah</h4><div class="prize">🏆 Rp 1.500.000</div><div class="deadline">📅 Deadline: 10 Jul</div></div>
+      <div class="lomba-hi-card"><div class="icon">🎤</div><div class="cat-badge">Akademik</div><h4>Debat Bahasa Inggris</h4><div class="prize">🏆 Rp 2.000.000</div><div class="deadline">📅 Deadline: 12 Jul</div></div>
+      <div class="lomba-hi-card"><div class="icon">🎨</div><div class="cat-badge">Seni</div><h4>Desain Poster</h4><div class="prize">🏆 Rp 1.800.000</div><div class="deadline">📅 Deadline: 14 Jul</div></div>
+      <div class="lomba-hi-card"><div class="icon">💻</div><div class="cat-badge">Teknologi</div><h4>Hackathon</h4><div class="prize">🏆 Rp 5.000.000</div><div class="deadline">📅 Deadline: 12 Jul</div></div>
+      <div class="lomba-hi-card"><div class="icon">⚽</div><div class="cat-badge">Olahraga</div><h4>Futsal</h4><div class="prize">🏆 Trofi + Rp 3.000.000</div><div class="deadline">📅 Deadline: 15 Jul</div></div>
+      <div class="lomba-hi-card"><div class="icon">🤖</div><div class="cat-badge">Teknologi</div><h4>Robotika</h4><div class="prize">🏆 Rp 4.000.000</div><div class="deadline">📅 Deadline: 13 Jul</div></div>
+    </div>
+    <div class="cta-center">
+      <button class="btn-primary" onclick="goTo('page-login')">Lihat Semua & Daftar →</button>
+    </div>
+  </div>
+
+  <div class="timeline-sec" id="timeline-sec">
+    <div class="sec-label">Jadwal</div>
+    <div class="sec-title">Alur Pendaftaran</div>
+    <div class="timeline">
+      <div class="t-step"><div class="t-dot">📝</div><h4>Buat Akun</h4><p>Registrasi dengan NIM & email kampus</p></div>
+      <div class="t-step"><div class="t-dot">🔍</div><h4>Pilih Lomba</h4><p>Telusuri dan pilih kategori lomba</p></div>
+      <div class="t-step"><div class="t-dot">📋</div><h4>Isi Form</h4><p>Lengkapi data pendaftaran</p></div>
+      <div class="t-step"><div class="t-dot">✅</div><h4>Konfirmasi</h4><p>Tunggu verifikasi panitia</p></div>
+      <div class="t-step"><div class="t-dot">🏆</div><h4>Berlomba!</h4><p>Ikuti lomba dan raih juara</p></div>
+    </div>
+  </div>
+
+  <div class="cta-sec">
+    <h2>Siap Tampil & Berprestasi?</h2>
+    <p>Jangan sampai ketinggalan! Pendaftaran ditutup 15 Juli 2026.</p>
+    <button class="btn-primary" onclick="goTo('page-login')">Mulai Daftar Sekarang 🚀</button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">LombaKu — PMI<small>Politeknik Mardira Indonesia</small></div>
+    <div class="footer-copy">&copy; 2026 Unit Kemahasiswaan <span>PMI</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ LOGIN ══════════════════════════════ -->
+<div id="page-login" class="page">
+  <div style="min-height:100vh;background:linear-gradient(155deg,var(--navy) 0%,var(--navy2) 60%,var(--blue) 100%);display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="mark">M</div>
+        <h2>Selamat Datang</h2>
+        <p>Login ke LombaKu — Politeknik Mardira Indonesia</p>
+      </div>
+
+      <div class="role-tabs">
+        <button class="role-tab active" id="tab-mhs" onclick="switchRole('mhs')">👤 Mahasiswa</button>
+        <button class="role-tab" id="tab-admin" onclick="switchRole('admin')">🛡️ Admin</button>
+      </div>
+
+      <div class="login-hint" id="loginHint">
+        <strong>Demo Mahasiswa:</strong> NIM: 2501010172 · Password: mahasiswa123
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" id="loginIdLabel">NIM</label>
+        <input class="form-input" type="text" id="loginId" placeholder="Masukkan NIM kamu">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="loginPass" placeholder="Masukkan password">
+      </div>
+      <button class="btn-login" onclick="doLogin()">Masuk ke Dashboard</button>
+
+      <div class="login-back">
+        <a onclick="goTo('page-landing')">← Kembali ke Beranda</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ DASHBOARD ADMIN ══════════════════════════════ -->
+<div id="page-admin" class="page">
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="s-mark">M</div>
+        <div><span>LombaKu</span><small>Admin Panel</small></div>
+      </div>
+      <div class="sidebar-nav">
+        <div class="nav-section-label">Menu Utama</div>
+        <div class="nav-item active" onclick="showPanel('admin','a-overview',this)"><span class="ni">📊</span> Overview</div>
+        <div class="nav-item" onclick="showPanel('admin','a-lomba',this)"><span class="ni">🏅</span> Kelola Lomba</div>
+        <div class="nav-item" onclick="showPanel('admin','a-peserta',this)"><span class="ni">👥</span> Data Peserta <span class="nav-badge">12</span></div>
+        <div class="nav-item" onclick="showPanel('admin','a-pendaftaran',this)"><span class="ni">📋</span> Pendaftaran <span class="nav-badge">3</span></div>
+        <div class="nav-section-label">Lainnya</div>
+        <div class="nav-item" onclick="showPanel('admin','a-pengumuman',this)"><span class="ni">📢</span> Pengumuman</div>
+        <div class="nav-item" onclick="showPanel('admin','a-laporan',this)"><span class="ni">📈</span> Laporan</div>
+      </div>
+      <div class="sidebar-user">
+        <div class="s-avatar">AD</div>
+        <div><div class="s-user-name">Admin PMI</div><div class="s-user-role">Administrator</div></div>
+        <button class="s-logout" onclick="goTo('page-login')" title="Logout">⏻</button>
+      </div>
+    </div>
+
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <div class="topbar-title">Dashboard Admin <small>Politeknik Mardira Indonesia</small></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn outline" onclick="showPanel('admin','a-lomba',null);openModal('modalTambahLomba')">+ Tambah Lomba</button>
+          <button class="topbar-btn primary" onclick="goTo('page-landing')">🏠 Beranda</button>
+        </div>
+      </div>
+
+      <div class="dash-content">
+
+        <!-- OVERVIEW -->
+        <div class="panel active" id="a-overview">
+          <div class="stat-row">
+            <div class="stat-card yellow-acc"><div class="s-icon">🏅</div><div class="s-val">12</div><div class="s-lbl">Total Lomba</div><div class="s-delta">↑ 4 lomba baru bulan ini</div></div>
+            <div class="stat-card blue-acc"><div class="s-icon">👥</div><div class="s-val">247</div><div class="s-lbl">Total Peserta</div><div class="s-delta">↑ 32 minggu ini</div></div>
+            <div class="stat-card navy-acc"><div class="s-icon">📋</div><div class="s-val">189</div><div class="s-lbl">Pendaftaran Masuk</div><div class="s-delta">↑ 14 hari ini</div></div>
+            <div class="stat-card green-acc"><div class="s-icon">✅</div><div class="s-val">156</div><div class="s-lbl">Terverifikasi</div><div class="s-delta">↑ 8 hari ini</div></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div class="table-card">
+              <div class="table-head"><h3>Pendaftaran Terbaru</h3><span>Hari ini</span></div>
+              <table>
+                <thead><tr><th>Nama</th><th>Lomba</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Rahma S.</td><td>Hackathon</td><td><span class="badge yellow">Pending</span></td></tr>
+                  <tr><td>Budi P.</td><td>Futsal</td><td><span class="badge green">Verified</span></td></tr>
+                  <tr><td>Siti A.</td><td>Desain Poster</td><td><span class="badge green">Verified</span></td></tr>
+                  <tr><td>Andi R.</td><td>Esai Ilmiah</td><td><span class="badge yellow">Pending</span></td></tr>
+                  <tr><td>Dewi M.</td><td>Robotika</td><td><span class="badge blue">Review</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-card">
+              <div class="table-head"><h3>Lomba Terpopuler</h3><span>Bulan ini</span></div>
+              <div style="padding:16px 20px;">
+                <div class="chart-bars" id="adminChart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KELOLA LOMBA -->
+        <div class="panel" id="a-lomba">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div><h2 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-dark);">Kelola Lomba</h2><p style="font-size:13px;color:var(--text-light);margin-top:2px;">12 lomba aktif</p></div>
+            <button class="topbar-btn primary" onclick="openModal('modalTambahLomba')">+ Tambah Lomba Baru</button>
+          </div>
+          <div class="lomba-manage-grid" id="adminLombaGrid"></div>
+        </div>
+
+        <!-- DATA PESERTA -->
+        <div class="panel" id="a-peserta">
+          <div class="table-card">
+            <div class="table-head"><h3>Data Peserta Terdaftar</h3><span>247 peserta</span></div>
+            <table>
+              <thead><tr><th>NIM</th><th>Nama</th><th>Jurusan</th><th>Lomba</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody id="pesertaTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PENDAFTARAN MASUK -->
+        <div class="panel" id="a-pendaftaran">
+          <div class="table-card">
+            <div class="table-head"><h3>Pendaftaran Menunggu Verifikasi</h3><span>3 pending</span></div>
+            <table>
+              <thead><tr><th>NIM</th><th>Nama</th><th>Lomba</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+              <tbody>
+                <tr><td>2501010172</td><td>Rahma Syamrotul</td><td>Hackathon</td><td>04 Jun 2026</td><td><button class="btn-sm success" onclick="showToast('✅ Pendaftaran diverifikasi!')">Verifikasi</button> <button class="btn-sm danger" onclick="showToast('❌ Pendaftaran ditolak.')">Tolak</button></td></tr>
+                <tr><td>2501020088</td><td>Andi Raharjo</td><td>Esai Ilmiah</td><td>03 Jun 2026</td><td><button class="btn-sm success" onclick="showToast('✅ Pendaftaran diverifikasi!')">Verifikasi</button> <button class="btn-sm danger" onclick="showToast('❌ Pendaftaran ditolak.')">Tolak</button></td></tr>
+                <tr><td>2501030045</td><td>Dewi Maharani</td><td>Robotika</td><td>03 Jun 2026</td><td><button class="btn-sm success" onclick="showToast('✅ Pendaftaran diverifikasi!')">Verifikasi</button> <button class="btn-sm danger" onclick="showToast('❌ Pendaftaran ditolak.')">Tolak</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PENGUMUMAN -->
+        <div class="panel" id="a-pengumuman">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:20px;">Pengumuman</h2>
+            <button class="topbar-btn primary" onclick="showToast('📢 Form pengumuman dibuka!')">+ Buat Pengumuman</button>
+          </div>
+          <div class="table-card">
+            <div class="table-head"><h3>Pengumuman Aktif</h3></div>
+            <table>
+              <thead><tr><th>Judul</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody>
+                <tr><td>Pengumuman Peserta Lolos Hackathon</td><td>01 Jun 2026</td><td><span class="badge green">Aktif</span></td><td><button class="btn-sm outline">Edit</button></td></tr>
+                <tr><td>Perubahan Jadwal Futsal</td><td>28 Mei 2026</td><td><span class="badge green">Aktif</span></td><td><button class="btn-sm outline">Edit</button></td></tr>
+                <tr><td>Perpanjangan Deadline Esai</td><td>25 Mei 2026</td><td><span class="badge gray">Selesai</span></td><td><button class="btn-sm outline">Edit</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- LAPORAN -->
+        <div class="panel" id="a-laporan">
+          <div class="stat-row">
+            <div class="stat-card yellow-acc"><div class="s-icon">📊</div><div class="s-val">82%</div><div class="s-lbl">Tingkat Verifikasi</div></div>
+            <div class="stat-card blue-acc"><div class="s-icon">📅</div><div class="s-val">11</div><div class="s-lbl">Hari Tersisa</div></div>
+            <div class="stat-card navy-acc"><div class="s-icon">💰</div><div class="s-val">35jt</div><div class="s-lbl">Total Hadiah</div></div>
+          </div>
+          <div class="table-card">
+            <div class="table-head"><h3>Rekap Per Kategori</h3></div>
+            <table>
+              <thead><tr><th>Kategori</th><th>Jumlah Lomba</th><th>Peserta</th><th>Terverifikasi</th></tr></thead>
+              <tbody>
+                <tr><td>Akademik</td><td>3</td><td>68</td><td><span class="badge green">59</span></td></tr>
+                <tr><td>Seni & Kreativitas</td><td>3</td><td>54</td><td><span class="badge green">44</span></td></tr>
+                <tr><td>Olahraga</td><td>3</td><td>81</td><td><span class="badge yellow">62</span></td></tr>
+                <tr><td>Teknologi</td><td>3</td><td>44</td><td><span class="badge blue">31</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- dash-content -->
+    </div><!-- dash-main -->
+  </div>
+</div>
+
+<!-- ══════════════════════════════ DASHBOARD MAHASISWA ══════════════════════════════ -->
+<div id="page-mhs" class="page">
+  <div class="dash-wrap">
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <div class="s-mark">M</div>
+        <div><span>LombaKu</span><small>Mahasiswa</small></div>
+      </div>
+      <div class="sidebar-nav">
+        <div class="nav-section-label">Menu</div>
+        <div class="nav-item active" onclick="showPanel('mhs','m-overview',this)"><span class="ni">🏠</span> Beranda</div>
+        <div class="nav-item" onclick="showPanel('mhs','m-daftar',this)"><span class="ni">🏅</span> Daftar Lomba</div>
+        <div class="nav-item" onclick="showPanel('mhs','m-status',this)"><span class="ni">📋</span> Status Pendaftaran</div>
+        <div class="nav-item" onclick="showPanel('mhs','m-pengumuman',this)"><span class="ni">📢</span> Pengumuman <span class="nav-badge">2</span></div>
+        <div class="nav-section-label">Akun</div>
+        <div class="nav-item" onclick="showPanel('mhs','m-profil',this)"><span class="ni">👤</span> Profil Saya</div>
+      </div>
+      <div class="sidebar-user">
+        <div class="s-avatar">RS</div>
+        <div><div class="s-user-name">Rahma S.</div><div class="s-user-role">Mahasiswa · RPL</div></div>
+        <button class="s-logout" onclick="goTo('page-login')" title="Logout">⏻</button>
+      </div>
+    </div>
+
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <div class="topbar-title">Dashboard Mahasiswa <small>Halo, Rahma! 👋</small></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn outline" onclick="showPanel('mhs','m-daftar',null)">+ Daftar Lomba</button>
+          <button class="topbar-btn primary" onclick="goTo('page-landing')">🏠 Beranda</button>
+        </div>
+      </div>
+
+      <div class="dash-content">
+
+        <!-- OVERVIEW MHS -->
+        <div class="panel active" id="m-overview">
+          <div class="stat-row">
+            <div class="stat-card blue-acc"><div class="s-icon">📋</div><div class="s-val">3</div><div class="s-lbl">Lomba Didaftar</div></div>
+            <div class="stat-card green-acc"><div class="s-icon">✅</div><div class="s-val">2</div><div class="s-lbl">Terverifikasi</div></div>
+            <div class="stat-card yellow-acc"><div class="s-icon">⏳</div><div class="s-val">1</div><div class="s-lbl">Menunggu</div></div>
+            <div class="stat-card navy-acc"><div class="s-icon">🏅</div><div class="s-val">11</div><div class="s-lbl">Hari Tersisa</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="table-card">
+              <div class="table-head"><h3>Lombaku</h3><span>3 terdaftar</span></div>
+              <table>
+                <thead><tr><th>Lomba</th><th>Deadline</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>💻 Hackathon</td><td>12 Jul</td><td><span class="badge yellow">Pending</span></td></tr>
+                  <tr><td>🖥️ UI/UX Design</td><td>10 Jul</td><td><span class="badge green">Verified</span></td></tr>
+                  <tr><td>📝 Esai Ilmiah</td><td>10 Jul</td><td><span class="badge green">Verified</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-card">
+              <div class="table-head"><h3>Pengumuman Terbaru</h3></div>
+              <div style="padding:16px 20px;">
+                <div style="border-left:3px solid var(--yellow);padding:10px 14px;margin-bottom:10px;background:var(--yellow-light);border-radius:0 8px 8px 0;">
+                  <div style="font-size:12px;font-weight:600;color:var(--text-dark);">Peserta Lolos Hackathon</div>
+                  <div style="font-size:11px;color:var(--text-light);margin-top:3px;">Cek nama kamu di daftar peserta lolos seleksi administrasi...</div>
+                  <div style="font-size:10px;color:var(--text-light);margin-top:6px;">01 Jun 2026</div>
+                </div>
+                <div style="border-left:3px solid var(--blue-mid);padding:10px 14px;background:var(--blue-pale);border-radius:0 8px 8px 0;">
+                  <div style="font-size:12px;font-weight:600;color:var(--text-dark);">Perubahan Jadwal Futsal</div>
+                  <div style="font-size:11px;color:var(--text-light);margin-top:3px;">Jadwal pertandingan futsal diundur menjadi 20 Juli 2026...</div>
+                  <div style="font-size:10px;color:var(--text-light);margin-top:6px;">28 Mei 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DAFTAR LOMBA MHS -->
+        <div class="panel" id="m-daftar">
+          <div style="margin-bottom:20px;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-dark);">Pilih & Daftar Lomba</h2>
+            <p style="font-size:13px;color:var(--text-light);margin-top:2px;">Klik tombol "Daftar" pada lomba yang ingin kamu ikuti</p>
+          </div>
+          <div class="lomba-manage-grid" id="mhsLombaGrid"></div>
+        </div>
+
+        <!-- STATUS PENDAFTARAN -->
+        <div class="panel" id="m-status">
+          <div class="table-card">
+            <div class="table-head"><h3>Status Pendaftaran Saya</h3><span>3 lomba</span></div>
+            <table>
+              <thead><tr><th>Lomba</th><th>Kategori</th><th>Tgl Daftar</th><th>Deadline</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>💻 Hackathon</td><td><span class="badge blue">Teknologi</span></td><td>04 Jun 2026</td><td>12 Jul</td><td><span class="badge yellow">Pending</span></td></tr>
+                <tr><td>🖥️ UI/UX Design</td><td><span class="badge blue">Teknologi</span></td><td>01 Jun 2026</td><td>10 Jul</td><td><span class="badge green">Verified</span></td></tr>
+                <tr><td>📝 Esai Ilmiah</td><td><span class="badge blue">Akademik</span></td><td>30 Mei 2026</td><td>10 Jul</td><td><span class="badge green">Verified</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PENGUMUMAN MHS -->
+        <div class="panel" id="m-pengumuman">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <span style="font-size:20px;">📢</span>
+                <div><div style="font-size:14px;font-weight:600;color:var(--text-dark);">Pengumuman Peserta Lolos Hackathon</div><div style="font-size:11px;color:var(--text-light);">01 Jun 2026 · Admin PMI</div></div>
+                <span class="badge yellow" style="margin-left:auto;">Baru</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">Selamat kepada peserta yang berhasil lolos seleksi administrasi Hackathon 2026! Silakan cek daftar lengkap peserta lolos di papan pengumuman atau hubungi panitia untuk konfirmasi kehadiran teknikal briefing pada 18 Juli 2026.</p>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px;">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                <span style="font-size:20px;">📅</span>
+                <div><div style="font-size:14px;font-weight:600;color:var(--text-dark);">Perubahan Jadwal Futsal</div><div style="font-size:11px;color:var(--text-light);">28 Mei 2026 · Admin PMI</div></div>
+                <span class="badge yellow" style="margin-left:auto;">Baru</span>
+              </div>
+              <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">Diumumkan bahwa jadwal pertandingan futsal diubah dari tanggal 17 Juli menjadi 20 Juli 2026. Mohon peserta mempersiapkan diri dan hadir tepat waktu. Informasi teknis pertandingan akan disampaikan H-3 melalui grup WhatsApp peserta.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFIL MHS -->
+        <div class="panel" id="m-profil">
+          <div class="profile-card">
+            <div class="profile-avatar">RS</div>
+            <div class="profile-name">Rahma Syamrotul Fuadah</div>
+            <div class="profile-nim">NIM: 2501010172</div>
+            <div class="profile-row">
+              <div class="profile-field"><label>JURUSAN</label><span>Rekayasa Perangkat Lunak</span></div>
+              <div class="profile-field"><label>SEMESTER</label><span>5</span></div>
+              <div class="profile-field"><label>EMAIL</label><span>rahma@mardira.ac.id</span></div>
+              <div class="profile-field"><label>WHATSAPP</label><span>08123456789</span></div>
+            </div>
+            <button class="btn-sm primary" onclick="showToast('✏️ Form edit profil dibuka!')">Edit Profil</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL TAMBAH LOMBA -->
+<div class="modal-overlay" id="modalTambahLomba">
+  <div class="modal-box">
+    <h3>Tambah Lomba Baru <button class="modal-close" onclick="closeModal('modalTambahLomba')">×</button></h3>
+    <div>
+      <label class="form-label-m">Nama Lomba *</label>
+      <input class="form-input-m" type="text" placeholder="Contoh: Lomba Cerdas Cermat" id="mNama">
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div>
+        <label class="form-label-m">Kategori *</label>
+        <select class="form-select-m" id="mKat">
+          <option value="">Pilih</option>
+          <option>Akademik</option><option>Seni & Kreativitas</option>
+          <option>Olahraga</option><option>Teknologi</option>
+        </select>
+      </div>
+      <div>
+        <label class="form-label-m">Deadline *</label>
+        <input class="form-input-m" type="date" id="mDeadline">
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <label class="form-label-m">Hadiah / Prize</label>
+      <input class="form-input-m" type="text" placeholder="Contoh: Rp 2.000.000" id="mPrize">
+    </div>
+    <div style="margin-top:14px;">
+      <label class="form-label-m">Deskripsi</label>
+      <textarea class="form-textarea-m" placeholder="Deskripsi singkat lomba..." id="mDesc"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeModal('modalTambahLomba')">Batal</button>
+      <button class="btn-modal-primary" onclick="saveLomba()">Simpan Lomba</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const lombaData = [
+  {id:'l1',name:'Esai Ilmiah',cat:'Akademik',icon:'📝',deadline:'10 Jul',prize:'Rp 1.500.000',peserta:28},
+  {id:'l2',name:'Debat Bahasa Inggris',cat:'Akademik',icon:'🎤',deadline:'12 Jul',prize:'Rp 2.000.000',peserta:18},
+  {id:'l3',name:'Olimpiade Matematika',cat:'Akademik',icon:'📐',deadline:'8 Jul',prize:'Rp 1.200.000',peserta:22},
+  {id:'l4',name:'Desain Poster',cat:'Seni & Kreativitas',icon:'🎨',deadline:'14 Jul',prize:'Rp 1.800.000',peserta:31},
+  {id:'l5',name:'Fotografi',cat:'Seni & Kreativitas',icon:'📸',deadline:'11 Jul',prize:'Rp 1.000.000',peserta:19},
+  {id:'l6',name:'Video Pendek',cat:'Seni & Kreativitas',icon:'🎬',deadline:'13 Jul',prize:'Rp 2.500.000',peserta:24},
+  {id:'l7',name:'Futsal',cat:'Olahraga',icon:'⚽',deadline:'15 Jul',prize:'Rp 3.000.000',peserta:40},
+  {id:'l8',name:'Badminton',cat:'Olahraga',icon:'🏸',deadline:'15 Jul',prize:'Rp 2.000.000',peserta:26},
+  {id:'l9',name:'E-Sport Mobile',cat:'Olahraga',icon:'🎮',deadline:'14 Jul',prize:'Rp 3.500.000',peserta:35},
+  {id:'l10',name:'Hackathon',cat:'Teknologi',icon:'💻',deadline:'12 Jul',prize:'Rp 5.000.000',peserta:44},
+  {id:'l11',name:'UI/UX Design',cat:'Teknologi',icon:'🖥️',deadline:'10 Jul',prize:'Rp 2.000.000',peserta:30},
+  {id:'l12',name:'Robotika',cat:'Teknologi',icon:'🤖',deadline:'13 Jul',prize:'Rp 4.000.000',peserta:20},
+];
+
+let mhsRegistered = ['l10','l11','l1'];
+let currentRole = 'mhs';
+
+function goTo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function switchRole(role){
+  currentRole=role;
+  document.getElementById('tab-mhs').classList.toggle('active',role==='mhs');
+  document.getElementById('tab-admin').classList.toggle('active',role==='admin');
+  const hint=document.getElementById('loginHint');
+  const lbl=document.getElementById('loginIdLabel');
+  if(role==='admin'){
+    hint.innerHTML='<strong>Demo Admin:</strong> Username: admin · Password: admin123';
+    lbl.textContent='Username';
+    document.getElementById('loginId').placeholder='Masukkan username admin';
+  } else {
+    hint.innerHTML='<strong>Demo Mahasiswa:</strong> NIM: 2501010172 · Password: mahasiswa123';
+    lbl.textContent='NIM';
+    document.getElementById('loginId').placeholder='Masukkan NIM kamu';
+  }
+}
+
+function doLogin(){
+  const id=document.getElementById('loginId').value.trim();
+  const pass=document.getElementById('loginPass').value.trim();
+  if(currentRole==='admin'){
+    if(id==='admin'&&pass==='admin123'){renderAdmin();goTo('page-admin');}
+    else alert('Username atau password admin salah!\nCoba: admin / admin123');
+  } else {
+    if(id==='2501010172'&&pass==='mahasiswa123'){renderMhs();goTo('page-mhs');}
+    else alert('NIM atau password salah!\nCoba: 2501010172 / mahasiswa123');
+  }
+}
+
+function showPanel(dash,panelId,navEl){
+  const prefix=dash==='admin'?'a-':'m-';
+  document.querySelectorAll('#page-'+dash+' .panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  if(navEl){
+    const sidebar=navEl.closest('.sidebar-nav');
+    sidebar.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    navEl.classList.add('active');
+  }
+  const titles={
+    'a-overview':'Overview','a-lomba':'Kelola Lomba','a-peserta':'Data Peserta',
+    'a-pendaftaran':'Pendaftaran Masuk','a-pengumuman':'Pengumuman','a-laporan':'Laporan',
+    'a-mahasiswa':'Data Mahasiswa',
+    'm-overview':'Beranda','m-daftar':'Daftar Lomba','m-status':'Status Pendaftaran',
+    'm-pengumuman':'Pengumuman','m-profil':'Profil Saya'
+  };
+  const tbar=document.querySelector('#page-'+dash+' .topbar-title');
+  if(tbar) tbar.innerHTML=titles[panelId]||panelId;
+}
+
+function renderAdmin(){
+  // lomba grid
+  const grid=document.getElementById('adminLombaGrid');
+  if(grid) grid.innerHTML=lombaData.map(l=>`
+    <div class="lm-card">
+      <div class="lm-icon">${l.icon}</div>
+      <h4>${l.name}</h4>
+      <div class="lm-meta">📂 ${l.cat}<br>📅 Deadline: ${l.deadline}<br>👥 ${l.peserta} peserta</div>
+      <div class="lm-prize">🏆 ${l.prize}</div>
+      <div class="lm-actions">
+        <button class="btn-sm outline" onclick="showToast('✏️ Edit ${l.name}')">Edit</button>
+        <button class="btn-sm danger" onclick="showToast('🗑️ ${l.name} dihapus')">Hapus</button>
+      </div>
+    </div>`).join('');
+
+  // peserta table
+  const pt=document.getElementById('pesertaTable');
+  const peserta=[
+    ['2501010172','Rahma Syamrotul','RPL','Hackathon, UI/UX, Esai','Verified'],
+    ['2501020088','Andi Raharjo','TI','Esai Ilmiah','Pending'],
+    ['2501030045','Dewi Maharani','SI','Robotika','Review'],
+    ['2501040021','Budi Prasetyo','RPL','Futsal','Verified'],
+    ['2501050033','Siti Aminah','DKV','Desain Poster','Verified'],
+  ];
+  if(pt) pt.innerHTML=peserta.map(p=>`<tr><td>${p[0]}</td><td>${p[1]}</td><td>${p[2]}</td><td>${p[3]}</td><td><span class="badge ${p[4]==='Verified'?'green':p[4]==='Pending'?'yellow':'blue'}">${p[4]}</span></td><td><button class="btn-sm outline" onclick="showToast('👁️ Detail ${p[1]}')">Detail</button></td></tr>`).join('');
+
+  // chart
+  const chart=document.getElementById('adminChart');
+  const bars=[{l:'Hackathon',v:44,h:true},{l:'Futsal',v:40,h:false},{l:'E-Sport',v:35,h:false},{l:'Desain',v:31,h:false},{l:'UI/UX',v:30,h:false}];
+  const max=44;
+  if(chart) chart.innerHTML=bars.map(b=>`<div class="bar-wrap"><div class="bar-val">${b.v}</div><div class="bar ${b.h?'highlight':''}" style="height:${Math.round(b.v/max*100)}px"></div><div class="bar-lbl">${b.l}</div></div>`).join('');
+}
+
+function renderMhs(){
+  const grid=document.getElementById('mhsLombaGrid');
+  if(grid) grid.innerHTML=lombaData.map(l=>{
+    const reg=mhsRegistered.includes(l.id);
+    return `<div class="lm-card ${reg?'':''}">
+      <div class="lm-icon">${l.icon}</div>
+      <h4>${l.name}</h4>
+      <div class="lm-meta">📂 ${l.cat}<br>📅 Deadline: ${l.deadline}<br>👥 ${l.peserta} peserta</div>
+      <div class="lm-prize">🏆 ${l.prize}</div>
+      <div class="lm-actions">
+        ${reg
+          ? `<button class="btn-sm success" disabled>✓ Terdaftar</button><button class="btn-sm danger" onclick="batalLomba('${l.id}','${l.name}')">Batal</button>`
+          : `<button class="btn-sm primary" onclick="daftarLomba('${l.id}','${l.name}')">+ Daftar</button>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function daftarLomba(id,nama){
+  if(mhsRegistered.includes(id)){showToast('Kamu sudah terdaftar!');return;}
+  mhsRegistered.push(id);
+  renderMhs();
+  showToast('🎉 Berhasil daftar '+nama+'!');
+}
+function batalLomba(id,nama){
+  mhsRegistered=mhsRegistered.filter(x=>x!==id);
+  renderMhs();
+  showToast('❌ Pendaftaran '+nama+' dibatalkan');
+}
+
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+
+function saveLomba(){
+  const nama=document.getElementById('mNama').value.trim();
+  if(!nama){alert('Nama lomba wajib diisi!');return;}
+  showToast('✅ Lomba "'+nama+'" berhasil ditambahkan!');
+  closeModal('modalTambahLomba');
+  document.getElementById('mNama').value='';
+  document.getElementById('mKat').value='';
+  document.getElementById('mDeadline').value='';
+  document.getElementById('mPrize').value='';
+  document.getElementById('mDesc').value='';
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+</body>
+</html>
